@@ -13,11 +13,11 @@ public class Cliente {
 	public static void main(String[] args) throws Exception{
 		System.out.println("Iniciando cliente...");
 		
-		System.out.println("Iniciando conex‹o com o servidor...");
+		System.out.println("Iniciando conexï¿½o com o servidor...");
 		
-		Socket socket = new Socket("localhost",30003);
+		Socket socket = new Socket("localhost",30001);
 		
-		System.out.println("Conex‹o estabelecida.");
+		System.out.println("Conexï¿½o estabelecida.");
 		
 		InputStream input = socket.getInputStream();
 		OutputStream output = socket.getOutputStream();
@@ -25,26 +25,28 @@ public class Cliente {
 		BufferedReader in = new BufferedReader(new InputStreamReader(input));
 		PrintStream out = new PrintStream(output);
 		
-		Scanner scanner = new Scanner(System.in);
+		
 		
 		while(true){
-			System.out.print("Digite uma mensagem: ");
-			String mensagem = scanner.nextLine();
+			String mensagem = in.readLine();
 			
-			out.println(mensagem);
+			System.out.println(
+					"Mensagem recebida do servidor[" + socket.getInetAddress().getHostName() +
+					"]: " +
+					mensagem);
 			
 			if("FIM".equals(mensagem)){
 				break;
 			}
 			
-			mensagem = in.readLine();
+		//	mensagem = in.readLine();
 			
-			System.out.println(
-					"Mensagem recebida do servidor: " +
-					mensagem);
+		//	System.out.println(
+		//			"Mensagem recebida do servidor: " +
+		//			mensagem);
 		}
 		
-		System.out.println("Encerrando conex‹o...");
+		System.out.println("Encerrando conexï¿½o...");
 		
 		in.close();
 		

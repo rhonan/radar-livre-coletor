@@ -7,18 +7,19 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class Servidor {
 	public static void main(String[]  args) throws Exception {
 		System.out.println("Iniciando servidor...");
 		
-		ServerSocket server = new ServerSocket(30003);
+		ServerSocket server = new ServerSocket(30001);
 		
-		System.out.println("Aguardando conex‹o...");
+		System.out.println("Aguardando conexï¿½o...");
 		
 		Socket socket = server.accept();
 		
-		System.out.println("Conex‹o estabelecida.");
+		System.out.println("Conexï¿½o estabelecida.");
 		
 		InputStream input = socket.getInputStream();
 		OutputStream output = socket.getOutputStream();
@@ -26,22 +27,25 @@ public class Servidor {
 		BufferedReader in = new BufferedReader(new InputStreamReader(input));
 		PrintStream	out = new PrintStream(output);
 		
+		Scanner scanner = new Scanner(System.in);
+		
 		while(true){
-			String mensagem = in.readLine();
 			
-			System.out.println(
-					"Mensagem recebida do cliente[" + socket.getInetAddress().getHostName() +
-					"]: " +
-					mensagem);
+			System.out.print("Digite uma mensagem: ");
+			String mensagem = scanner.nextLine();
+			
+			out.println(mensagem);
+			
+			
 			
 			if("FIM".equals(mensagem)){
 				break;
 			}
 			
-			out.println(mensagem);
+			
 		}
 		
-		System.out.println("Encerrando conex‹o.");
+		System.out.println("Encerrando conexï¿½o.");
 		
 		in.close();
 		
