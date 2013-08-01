@@ -1,4 +1,4 @@
-package Socket;
+package socket;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.Socket;
-import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Cliente {
@@ -16,7 +15,7 @@ public class Cliente {
 		
 		System.out.println("Iniciando conex�o com o servidor...");
 		
-		Socket socket = new Socket("192.168.1.108",30003);
+		Socket socket = new Socket("127.0.0.1",30003);
 		
 		System.out.println("Conex�o estabelecida.");
 		
@@ -53,12 +52,7 @@ public class Cliente {
 			if("FIM".equals(mensagem)){
 				break;
 			}
-			
-		//	mensagem = in.readLine();
-			
-		//	System.out.println(
-		//			"Mensagem recebida do servidor: " +
-		//			mensagem);
+
 		}
 		
 		System.out.println("Encerrando conex�o...");

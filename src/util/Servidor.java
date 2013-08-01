@@ -1,4 +1,4 @@
-package Util;
+package util;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -13,7 +13,7 @@ public class Servidor {
 	public static void main(String[]  args) throws Exception {
 		System.out.println("Iniciando servidor...");
 		
-		ServerSocket server = new ServerSocket(30001);
+		ServerSocket server = new ServerSocket(30003);
 		
 		System.out.println("Aguardando conex�o...");
 		
