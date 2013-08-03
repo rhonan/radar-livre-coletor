@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name= "rota", catalog = "coletorbd")
+@Table(name= "rota")
 public class Rota implements java.io.Serializable{
 	
 	private String rota_id;
@@ -30,7 +30,8 @@ public class Rota implements java.io.Serializable{
 	}
 	
 	@Id
-	@Column(name = "ROTA_ID", unique = true, nullable = false)
+	@Column(name = "ROTA_ID", unique = true)
+	@PrimaryKeyJoinColumn
 	public String getRota_id() {
 		return this.rota_id;
 	}
@@ -40,7 +41,6 @@ public class Rota implements java.io.Serializable{
 	}
 	
 	@OneToOne(fetch = FetchType.LAZY)
-	@PrimaryKeyJoinColumn
 	public Aeronave getAeronave() {
 		return this.aeronave;
 	}
@@ -50,7 +50,6 @@ public class Rota implements java.io.Serializable{
 	}
 	
 	@OneToOne(fetch = FetchType.LAZY)
-	@PrimaryKeyJoinColumn
 	public Aeroporto getAeroporto_saida() {
 		return this.aeroporto_saida;
 	}
@@ -59,7 +58,6 @@ public class Rota implements java.io.Serializable{
 		this.aeroporto_saida = aeroporto_saida;
 	}
 	@OneToOne(fetch = FetchType.LAZY)
-	@PrimaryKeyJoinColumn
 	public Aeroporto getAeroporto_chegada() {
 		return this.aeroporto_chegada;
 	}

@@ -12,8 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "observacao", catalog = "coletorbd", uniqueConstraints = {
-		@UniqueConstraint(columnNames = "ROTA"),
+@Table(name = "observacao", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "RADAR"),
 		@UniqueConstraint(columnNames = "LATITUDE"),
 		@UniqueConstraint(columnNames = "LONGITUDE"),
@@ -24,7 +23,7 @@ import javax.persistence.UniqueConstraint;
 
 public class Observacao implements java.io.Serializable{
 	
-	private int id;
+	private long id;
 	private Rota rota;
 	private String radar;
 	private long latitude;
@@ -33,18 +32,38 @@ public class Observacao implements java.io.Serializable{
 	private int velocidade;
 	private int angulo;
 	private Date hora;
+	private Aeronave aeronave;
+	
+	public Observacao(){
+		
+	}
+	
+	public Observacao(int id, Rota rota, String radar, long latitude,
+			long longitude, int altitude, int velocidade, int angulo,
+			Date hora, Aeronave aeronave) {
+		this.id = id;
+		this.rota = rota;
+		this.radar = radar;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.altitude = altitude;
+		this.velocidade = velocidade;
+		this.angulo = angulo;
+		this.hora = hora;
+		this.aeronave = aeronave;
+	}
 
 	@Id
-	@Column(name = "ID", unique = true, nullable = false)
-	public int getId() {
+	@Column(name = "ID", unique = true)
+	public long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "observacao", cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	public Rota getRota() {
 		return this.rota;
 	}
@@ -53,7 +72,16 @@ public class Observacao implements java.io.Serializable{
 		this.rota = rota;
 	}
 
-	@Column(name = "RADAR", nullable=false)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	public Aeronave getAeronave() {
+		return this.aeronave;
+	}
+
+	public void setAeronave(Aeronave aeronave) {
+		this.aeronave = aeronave;
+	}
+	
+	@Column(name = "RADAR")
 	public String getRadar() {
 		return this.radar;
 	}
@@ -62,7 +90,7 @@ public class Observacao implements java.io.Serializable{
 		this.radar = radar;
 	}
 
-	@Column(name = "LATITUDE", nullable=false)
+	@Column(name = "LATITUDE")
 	public long getLatitude() {
 		return this.latitude;
 	}
@@ -71,7 +99,7 @@ public class Observacao implements java.io.Serializable{
 		this.latitude = latitude;
 	}
 
-	@Column(name = "LONGITUDE", nullable=false)
+	@Column(name = "LONGITUDE")
 	public long getLongitude() {
 		return this.longitude;
 	}
@@ -81,7 +109,7 @@ public class Observacao implements java.io.Serializable{
 	}
 
 	
-	@Column(name = "ALTITUDE", nullable=false)
+	@Column(name = "ALTITUDE")
 	public int getAltitude() {
 		return this.altitude;
 	}
@@ -90,7 +118,7 @@ public class Observacao implements java.io.Serializable{
 		this.altitude = altitude;
 	}
 
-	@Column(name = "VELOCIDADE", nullable=false)
+	@Column(name = "VELOCIDADE")
 	public int getVelocidade() {
 		return this.velocidade;
 	}
@@ -99,7 +127,7 @@ public class Observacao implements java.io.Serializable{
 		this.velocidade = velocidade;
 	}
 	
-	@Column(name = "ANGULO", nullable=false)
+	@Column(name = "ANGULO")
 	public int getAngulo() {
 		return this.angulo;
 	}
@@ -108,7 +136,7 @@ public class Observacao implements java.io.Serializable{
 		this.angulo = angulo;
 	}
 
-	@Column(name = "HORA", nullable=false)
+	@Column(name = "HORA")
 	public Date getHora() {
 		return this.hora;
 	}

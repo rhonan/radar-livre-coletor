@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "aeroporto", catalog = "coletorbd", uniqueConstraints = {
+@Table(name = "aeroporto", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "NOME"),
 		@UniqueConstraint(columnNames = "CIDADE"),
 		@UniqueConstraint(columnNames = "PAIS"),
@@ -27,7 +27,10 @@ public class Aeroporto {
 	private Long latitude;
 	private Long longitude;
 	private int altitude;
-	private List<Rota> rotas;
+	
+	public Aeroporto(){
+		
+	}
 	
 	public Aeroporto(String prefixo, String nome, String cidade, String pais, Long latitude, Long longitude, int altitude){
 		this.prefixo = prefixo;
@@ -37,19 +40,9 @@ public class Aeroporto {
 		this.longitude = longitude;
 		this.altitude = altitude;
 	}
-	
-	public Aeroporto(String prefixo, String nome, String cidade, String pais, Long latitude, Long longitude, int altitude, Rota rota, List<Rota> rotas){
-		this.prefixo = prefixo;
-		this.nome = nome;
-		this.pais = pais;
-		this.latitude = latitude;
-		this.longitude = longitude;
-		this.altitude = altitude;
-		this.rotas = rotas;
-	}
 
 	@Id
-	@Column(name = "PREFIXO", unique = true, nullable = false)
+	@Column(name = "PREFIXO", unique = true)
 	public String getPrefixo() {
 		return this.prefixo;
 	}
@@ -58,7 +51,7 @@ public class Aeroporto {
 		this.prefixo = prefixo;
 	}
 
-	@Column(name = "NOME", nullable=false)
+	@Column(name = "NOME")
 	public String getNome() {
 		return this.nome;
 	}
@@ -67,7 +60,7 @@ public class Aeroporto {
 		this.nome = nome;
 	}
 
-	@Column(name = "CIDADE", nullable=false)
+	@Column(name = "CIDADE")
 	public String getCidade() {
 		return this.cidade;
 	}
@@ -76,7 +69,7 @@ public class Aeroporto {
 		this.cidade = cidade;
 	}
 
-	@Column(name = "PAIS", nullable=false)
+	@Column(name = "PAIS")
 	public String getPais() {
 		return this.pais;
 	}
@@ -85,7 +78,7 @@ public class Aeroporto {
 		this.pais = pais;
 	}
 
-	@Column(name = "LATITUDE", nullable=false)
+	@Column(name = "LATITUDE")
 	public Long getLatitude() {
 		return this.latitude;
 	}
@@ -94,7 +87,7 @@ public class Aeroporto {
 		this.latitude = latitude;
 	}
 
-	@Column(name = "LONGITUDE", nullable=false)
+	@Column(name = "LONGITUDE")
 	public Long getLongitude() {
 		return this.longitude;
 	}
@@ -103,24 +96,13 @@ public class Aeroporto {
 		this.longitude = longitude;
 	}
 
-	@Column(name = "ALTITUDE", nullable=false)
+	@Column(name = "ALTITUDE")
 	public int getAltitude() {
 		return this.altitude;
 	}
 
 	public void setAltitude(int altitude) {
 		this.altitude = altitude;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "aeroporto")
-	public List<Rota> getRota() {
-		return this.rotas;
-	}
-
-	public void setRotas(List<Rota> rotas) {
-		this.rotas = rotas;
-	}
-	
-	
+	}	
 	
 }

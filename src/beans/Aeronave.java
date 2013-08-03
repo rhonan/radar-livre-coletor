@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "aeronave", catalog = "coletorbd", uniqueConstraints = {
+@Table(name = "aeronave", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "MODELO_AERONAVE"),
 		@UniqueConstraint(columnNames = "COMPANHIA") })
 
@@ -39,7 +39,7 @@ public class Aeronave implements java.io.Serializable{
 	}
 	
 	@Id
-	@Column(name = "HEX", unique = true, nullable = false)
+	@Column(name = "HEX", unique = true)
 	public String getHex() {
 		return this.hex;
 	}
@@ -48,7 +48,7 @@ public class Aeronave implements java.io.Serializable{
 		this.hex = hex;
 	}
 	
-	@Column(name = "MODELO_AERONAVE", nullable=false)
+	@Column(name = "MODELO_AERONAVE")
 	public String getModelo_aeronave() {
 		return this.modelo_aeronave;
 	}
@@ -57,7 +57,7 @@ public class Aeronave implements java.io.Serializable{
 		this.modelo_aeronave = modelo_aeronave;
 	}
 	
-	@Column(name = "COMPANHIA", nullable=false)
+	@Column(name = "COMPANHIA")
 	public String getCompanhia() {
 		return this.companhia;
 	}
