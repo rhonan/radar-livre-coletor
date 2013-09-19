@@ -10,9 +10,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "aeronave", uniqueConstraints = {
-		@UniqueConstraint(columnNames = "MODELO_AERONAVE"),
-		@UniqueConstraint(columnNames = "COMPANHIA") })
+@Table(name = "aeronave")
 
 public class Aeronave implements java.io.Serializable{
 	

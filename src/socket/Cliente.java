@@ -45,74 +45,123 @@ public class Cliente {
 			switch(Integer.parseInt(mensagem_quebrada[1])){
 			
 				case 1:					
-					System.out.println("Tipo de mensagem recebida: " + mensagem_quebrada[1]);
+					System.out.println("Case 1 Tipo de mensagem recebida: " + mensagem_quebrada[1]);
 					aeronave.setHex(mensagem_quebrada[4]);
-					rota.setRota_id(mensagem_quebrada[5]);
-					observacao.setRota(rota);
+					//rota.setRota_id(mensagem_quebrada[5]);
+					//observacao.setRota(rota);
 					//mensagem_quebrada[9] mensagem_quebrada[10] observacao hora
-					AeronaveDao.adicionarAeronave(aeronave);
-					RotaDao.adicionarRota(rota);
-					ObservacaoDao.adicionarObservacao(observacao);
+					if(AeronaveDao.retornarAeronavePorHex(mensagem_quebrada[4]) == null){						AeronaveDao.adicionarAeronave(aeronave);
+						AeronaveDao.adicionarAeronave(aeronave);
+					}
 					break;
 				case 2:
-					System.out.println("Tipo de mensagem recebida: " + mensagem_quebrada[1]);
+					System.out.println("Case 2 Tipo de mensagem recebida: " + mensagem_quebrada[1]);
 					aeronave.setHex(mensagem_quebrada[4]);
 					rota.setRota_id(mensagem_quebrada[5]);
 					observacao.setRota(rota);
 					//mensagem_quebrada[9] mensagem_quebrada[10] observacao hora
-					observacao.setAltitude(Integer.parseInt(mensagem_quebrada[11]));
-					observacao.setLatitude(Long.parseLong(mensagem_quebrada[14]));
-					observacao.setLongitude(Long.parseLong(mensagem_quebrada[15]));
-					observacao.setAngulo(Integer.parseInt(mensagem_quebrada[13]));
+					//observacao.setAltitude(Integer.parseInt(mensagem_quebrada[11]));
+					observacao.setLatitude(Double.parseDouble(mensagem_quebrada[14]));
+					observacao.setLongitude(Double.parseDouble(mensagem_quebrada[15]));
+					observacao.setAngulo(Double.parseDouble(mensagem_quebrada[13]));
+					observacao.setVelocidade(Integer.parseInt(mensagem_quebrada[12]));
+					
+					if(AeronaveDao.retornarAeronavePorHex(mensagem_quebrada[4]) == null){
+						AeronaveDao.adicionarAeronave(aeronave);
+						ObservacaoDao.adicionarObservacao(observacao);
+					}else{
+						ObservacaoDao.adicionarObservacao(observacao);
+					}
+					
 					break;
 				case 3:
-					System.out.println("Tipo de mensagem recebida: " + mensagem_quebrada[1]);
+					System.out.println("Case 3 Tipo de mensagem recebida: " + mensagem_quebrada[1]);
+					
 					aeronave.setHex(mensagem_quebrada[4]);
 					rota.setRota_id(mensagem_quebrada[5]);
+					rota.setAeronave(aeronave);
 					observacao.setRota(rota);
-					//mensagem_quebrada[9] mensagem_quebrada[10] observacao hora
 					observacao.setAltitude(Integer.parseInt(mensagem_quebrada[11]));
-					observacao.setLatitude(Long.parseLong(mensagem_quebrada[14]));
-					observacao.setLongitude(Long.parseLong(mensagem_quebrada[15]));
+					observacao.setLatitude(Double.parseDouble(mensagem_quebrada[14]));
+					observacao.setLongitude(Double.parseDouble(mensagem_quebrada[15]));
+					observacao.setAeronave(aeronave);
+					
+					if(AeronaveDao.retornarAeronavePorHex(mensagem_quebrada[4]) == null){
+						AeronaveDao.adicionarAeronave(aeronave);
+						ObservacaoDao.adicionarObservacao(observacao);
+					}else{
+						ObservacaoDao.adicionarObservacao(observacao);
+					}
 					break;
 				case 4:
-					System.out.println("Tipo de mensagem recebida: " + mensagem_quebrada[1]);
+					System.out.println("Case 4 Tipo de mensagem recebida: " + mensagem_quebrada[1]);
 					aeronave.setHex(mensagem_quebrada[4]);
 					rota.setRota_id(mensagem_quebrada[5]);
 					observacao.setRota(rota);
 					//mensagem_quebrada[9] mensagem_quebrada[10] observacao hora
-					observacao.setAngulo(Integer.parseInt(mensagem_quebrada[13]));
+					observacao.setAngulo(Double.parseDouble(mensagem_quebrada[13]));
+					observacao.setVelocidade(Double.parseDouble(mensagem_quebrada[12]));
+					if(AeronaveDao.retornarAeronavePorHex(mensagem_quebrada[4]) == null){
+						AeronaveDao.adicionarAeronave(aeronave);
+						ObservacaoDao.adicionarObservacao(observacao);
+					}else{
+						ObservacaoDao.adicionarObservacao(observacao);
+					}
 					break;
 				case 5:
-					System.out.println("Tipo de mensagem recebida: " + mensagem_quebrada[1]);
+					System.out.println("Case 5 Tipo de mensagem recebida: " + mensagem_quebrada[1]);
 					aeronave.setHex(mensagem_quebrada[4]);
 					rota.setRota_id(mensagem_quebrada[5]);
 					observacao.setRota(rota);
 					//mensagem_quebrada[9] mensagem_quebrada[10] observacao hora
 					observacao.setAltitude(Integer.parseInt(mensagem_quebrada[11]));
+					if(AeronaveDao.retornarAeronavePorHex(mensagem_quebrada[4]) == null){
+						AeronaveDao.adicionarAeronave(aeronave);
+						ObservacaoDao.adicionarObservacao(observacao);
+					}else{
+						ObservacaoDao.adicionarObservacao(observacao);
+					}
 					break;
 				case 6:
-					System.out.println("Tipo de mensagem recebida: " + mensagem_quebrada[1]);
+					System.out.println("Case 6 Tipo de mensagem recebida: " + mensagem_quebrada[1]);
 					aeronave.setHex(mensagem_quebrada[4]);
 					rota.setRota_id(mensagem_quebrada[5]);
 					observacao.setRota(rota);
 					//mensagem_quebrada[9] mensagem_quebrada[10] observacao hora
 					observacao.setAltitude(Integer.parseInt(mensagem_quebrada[11]));
+					if(AeronaveDao.retornarAeronavePorHex(mensagem_quebrada[4]) == null){
+						AeronaveDao.adicionarAeronave(aeronave);
+						ObservacaoDao.adicionarObservacao(observacao);
+					}else{
+						ObservacaoDao.adicionarObservacao(observacao);
+					}
 					break;
 				case 7:
-					System.out.println("Tipo de mensagem recebida: " + mensagem_quebrada[1]);
+					System.out.println("Case 7 Tipo de mensagem recebida: " + mensagem_quebrada[1]);
 					aeronave.setHex(mensagem_quebrada[4]);
 					rota.setRota_id(mensagem_quebrada[5]);
 					observacao.setRota(rota);
 					//mensagem_quebrada[9] mensagem_quebrada[10] observacao hora
 					observacao.setAltitude(Integer.parseInt(mensagem_quebrada[11]));
+					if(AeronaveDao.retornarAeronavePorHex(mensagem_quebrada[4]) == null){
+						AeronaveDao.adicionarAeronave(aeronave);
+						ObservacaoDao.adicionarObservacao(observacao);
+					}else{
+						ObservacaoDao.adicionarObservacao(observacao);
+					}
 					break;
 				case 8:
-					System.out.println("Tipo de mensagem recebida: " + mensagem_quebrada[1]);
+					System.out.println("Case 8 Tipo de mensagem recebida: " + mensagem_quebrada[1]);
 					aeronave.setHex(mensagem_quebrada[4]);
 					rota.setRota_id(mensagem_quebrada[5]);
 					observacao.setRota(rota);
 					//mensagem_quebrada[9] mensagem_quebrada[10] observacao hora
+					if(AeronaveDao.retornarAeronavePorHex(mensagem_quebrada[4]) == null){
+						AeronaveDao.adicionarAeronave(aeronave);
+						ObservacaoDao.adicionarObservacao(observacao);
+					}else{
+						ObservacaoDao.adicionarObservacao(observacao);
+					}
 					break;
 			}
 			

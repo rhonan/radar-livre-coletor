@@ -11,13 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "aeroporto", uniqueConstraints = {
-		@UniqueConstraint(columnNames = "NOME"),
-		@UniqueConstraint(columnNames = "CIDADE"),
-		@UniqueConstraint(columnNames = "PAIS"),
-		@UniqueConstraint(columnNames = "LATITUDE"),
-		@UniqueConstraint(columnNames = "LONGITUDE"),
-		@UniqueConstraint(columnNames = "ALTITUDE")})
+@Table(name = "aeroporto")
 public class Aeroporto {
 	
 	private String prefixo;

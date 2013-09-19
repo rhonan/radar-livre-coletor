@@ -30,7 +30,7 @@ public class Rota implements java.io.Serializable{
 	}
 	
 	@Id
-	@Column(name = "ROTA_ID", unique = true)
+	@Column(name = "ROTA_ID")
 	@PrimaryKeyJoinColumn
 	public String getRota_id() {
 		return this.rota_id;

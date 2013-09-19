@@ -6,31 +6,26 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "observacao", uniqueConstraints = {
-		@UniqueConstraint(columnNames = "RADAR"),
-		@UniqueConstraint(columnNames = "LATITUDE"),
-		@UniqueConstraint(columnNames = "LONGITUDE"),
-		@UniqueConstraint(columnNames = "ALTITUDE"),
-		@UniqueConstraint(columnNames = "VELOCIDADE"),
-		@UniqueConstraint(columnNames = "ANGULO"),
-		@UniqueConstraint(columnNames = "HORA")})
+@Table(name = "observacao")
 
 public class Observacao implements java.io.Serializable{
 	
 	private long id;
 	private Rota rota;
 	private String radar;
-	private long latitude;
-	private long longitude;
+	private double latitude;
+	private double longitude;
 	private int altitude;
-	private int velocidade;
-	private int angulo;
+	private double velocidade;
+	private double angulo;
 	private Date hora;
 	private Aeronave aeronave;
 	
@@ -39,7 +34,7 @@ public class Observacao implements java.io.Serializable{
 	}
 	
 	public Observacao(int id, Rota rota, String radar, long latitude,
-			long longitude, int altitude, int velocidade, int angulo,
+			long longitude, int altitude, double velocidade, double angulo,
 			Date hora, Aeronave aeronave) {
 		this.id = id;
 		this.rota = rota;
@@ -54,6 +49,7 @@ public class Observacao implements java.io.Serializable{
 	}
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", unique = true)
 	public long getId() {
 		return this.id;
@@ -91,20 +87,20 @@ public class Observacao implements java.io.Serializable{
 	}
 
 	@Column(name = "LATITUDE")
-	public long getLatitude() {
+	public double getLatitude() {
 		return this.latitude;
 	}
 
-	public void setLatitude(long latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
 
 	@Column(name = "LONGITUDE")
-	public long getLongitude() {
+	public double getLongitude() {
 		return this.longitude;
 	}
 
-	public void setLongitude(long longitude) {
+	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
 
@@ -119,20 +115,20 @@ public class Observacao implements java.io.Serializable{
 	}
 
 	@Column(name = "VELOCIDADE")
-	public int getVelocidade() {
+	public double getVelocidade() {
 		return this.velocidade;
 	}
 
-	public void setVelocidade(int velocidade) {
+	public void setVelocidade(double velocidade) {
 		this.velocidade = velocidade;
 	}
 	
 	@Column(name = "ANGULO")
-	public int getAngulo() {
+	public double getAngulo() {
 		return this.angulo;
 	}
 
-	public void setAngulo(int angulo) {
+	public void setAngulo(double angulo) {
 		this.angulo = angulo;
 	}
 

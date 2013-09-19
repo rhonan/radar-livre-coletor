@@ -13,27 +13,29 @@ import beans.Observacao;
 
 public class ObservacaoDao {
 
+	static Session session;
+	
 	public static void adicionarObservacao(Observacao observacao){
-		Session session = GerarTabelas.preparaSessao();
+		session = GerarTabelas.preparaSessao();
 		session.save(observacao);
 		session.beginTransaction().commit();
 		session.close();
 	}
 	
 	public static ArrayList<Observacao> retornarObservacoes(){
-		Session session = GerarTabelas.preparaSessao();
+		session = GerarTabelas.preparaSessao();
 		ArrayList<Observacao> observacoes = (ArrayList<Observacao>) session.createCriteria(Observacao.class).list();
 		return observacoes;
 	}
 	
-	public static Observacao reotrnarObservacaoPorId(long id){
-		Session session = GerarTabelas.preparaSessao();
+	public static Observacao retornarObservacaoPorId(long id){
+		session = GerarTabelas.preparaSessao();
 		return (Observacao) session.createCriteria(Observacao.class).add(Restrictions.eq("id", id)).uniqueResult();
 	}
 	
 	public static void atualizarObservacao(Observacao novaObservacao)
 	{
-		Session session = GerarTabelas.preparaSessao();
+		session = GerarTabelas.preparaSessao();
 		Transaction transaction = session.beginTransaction();
 		Observacao observacaoDb = (Observacao) session.load(Observacao.class, novaObservacao.getId());
 		observacaoDb = novaObservacao;

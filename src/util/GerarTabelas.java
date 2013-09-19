@@ -7,6 +7,7 @@ import beans.Aeronave;
 import beans.Aeroporto;
 import beans.Rota;
 import beans.Observacao;
+import beans.RotaAeroporto;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -15,6 +16,9 @@ import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 public class GerarTabelas {
 
+	private static final AnnotationConfiguration annotConfig = adicionaClassesConfiguracao(initialize());
+	private static final SessionFactory sf = annotConfig.buildSessionFactory();;
+	
 	public static void exportarEsquema(List<Class<? extends Object>> classes) {
 		AnnotationConfiguration annotConfig = adicionaClassesConfiguracao(classes);
 
@@ -37,8 +41,8 @@ public class GerarTabelas {
 	}
 
 	public static Session preparaSessao() {
-		AnnotationConfiguration annotConfig = adicionaClassesConfiguracao(initialize());
-		SessionFactory sf = annotConfig.buildSessionFactory();
+		//AnnotationConfiguration annotConfig = adicionaClassesConfiguracao(initialize());
+		//SessionFactory sf = annotConfig.buildSessionFactory();
 		Session session = sf.openSession();
 		return session;
 	}
@@ -55,6 +59,7 @@ public class GerarTabelas {
 		classes.add(Aeroporto.class);
 		classes.add(Rota.class);
 		classes.add(Observacao.class);
+		classes.add(RotaAeroporto.class);
 		
 		return classes;
 	}
