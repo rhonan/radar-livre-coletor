@@ -1,48 +1,163 @@
 package dao;
 
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-import util.GerarTabelas;
-import beans.Aeronave;
+import util.ConexaoBanco;
 
 public class AeronaveDao {
 	
-	static Session session;
+	public static void adicionarAeronave(String hex, String modelo_aeronave, String companhia){
+		Connection connection;
+		String sql = "INSERT INTO aeronave (hex,modelo_aeronave,companhia) VALUES ('"+ hex +"','"+ modelo_aeronave +"','"+ companhia +"')";
+		
+		try {
+			
+			connection = ConexaoBanco.AbrirConexao();
+			ConexaoBanco.executeInsert(connection, sql);
+			connection.close();
+			
+			
+
 	
-	public static void adicionarAeronave(Aeronave aeronave){
-		session = GerarTabelas.preparaSessao();
-		session.save(aeronave);
-		session.beginTransaction().commit();
-		session.close();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} catch (Exception e) {
+		e.printStackTrace();
+	
+	}
+	}
+
+	public static void adicionarAeronaveHex(String hex){
+		Connection connection;
+		String sql = "INSERT INTO aeronave (hex) VALUES ('"+ hex +"')";
+		
+		try {
+			
+			connection = ConexaoBanco.AbrirConexao();
+			ConexaoBanco.executeInsert(connection, sql);
+			connection.close();
+			
+			
+
+	
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} catch (Exception e) {
+		e.printStackTrace();
+	
+	}
 	}
 	
-	public static ArrayList<Aeronave> retornarAeronaves(){
-		session = GerarTabelas.preparaSessao();
-		ArrayList<Aeronave> aeronaves = (ArrayList<Aeronave>) session.createCriteria(Aeronave.class).list();
-		return aeronaves;
+	public static JSONArray retornarAeronaves(){
+		Connection connection;
+		String sql="SELECT hex,companhia,modelo_aeronave FROM aeronave";
+		
+		String hex;
+		String companhia;
+		String modelo_aeronave;
+		
+		JSONArray arrayObj = new JSONArray();
+		
+		try {
+			connection = ConexaoBanco.AbrirConexao();
+			PreparedStatement pstm = connection.prepareStatement(sql);
+			ResultSet rs = pstm.executeQuery();
+			
+			while (rs.next()) {
+				JSONObject aeronaves = new JSONObject();
+				hex = (rs.getString("hex"));
+				companhia = (rs.getString("companhia"));
+				modelo_aeronave = (rs.getString("modelo_aeronave"));
+				aeronaves.put("hex",hex);
+				aeronaves.put("companhia",companhia);
+				aeronaves.put("modelo_aeronave",modelo_aeronave);
+			//	System.out.println(isbn + " " + nome_titulo + " " + tipo_titulo);
+				arrayObj.put(aeronaves);
+				
+			}
+			rs.close();
+			pstm.close();
+			connection.close();
+
+	
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} catch (Exception e) {
+		e.printStackTrace();
+	
+	}
+		
+		return arrayObj;
 	}
 	
-	public static Aeronave retornarAeronavePorHex(String hex){
-		session = GerarTabelas.preparaSessao();
-		Aeronave aeronave = (Aeronave) session.createCriteria(Aeronave.class).add(Restrictions.eq("hex", hex)).uniqueResult();
-		session.close();
-		return aeronave;
-		//return (Aeronave) session.createCriteria(Aeronave.class).add(Restrictions.eq("hex", hex)).uniqueResult();
+	public static JSONArray retornarAeronavePorHex(String hexBuscado){
+		Connection connection;
+		String sql = "SELECT hex,companhia,modelo_aeronave FROM aeronave WHERE hex="+ hexBuscado +"';";
+		
+		String hex;
+		String companhia;
+		String modelo_aeronave;
+		
+		JSONArray arrayObj = new JSONArray();
+		
+		try {
+			connection = ConexaoBanco.AbrirConexao();
+			PreparedStatement pstm = connection.prepareStatement(sql);
+			ResultSet rs = pstm.executeQuery();
+			
+			while (rs.next()) {
+				JSONObject aeronaves = new JSONObject();
+				hex = (rs.getString("hex"));
+				companhia = (rs.getString("companhia"));
+				modelo_aeronave = (rs.getString("modelo_aeronave"));
+				aeronaves.put("hex",hex);
+				aeronaves.put("companhia",companhia);
+				aeronaves.put("modelo_aeronave",modelo_aeronave);
+			//	System.out.println(isbn + " " + nome_titulo + " " + tipo_titulo);
+				arrayObj.put(aeronaves);
+				
+			}
+			rs.close();
+			pstm.close();
+			connection.close();
+
+	
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} catch (Exception e) {
+		e.printStackTrace();
+	
+	}
+		
+		return arrayObj;
 	}
 	
-	public static void atualizarAeronave(Aeronave novaAeronave)
-	{
-		session = GerarTabelas.preparaSessao();
-		Transaction transaction = session.beginTransaction();
-		Aeronave aeronaveDb = (Aeronave) session.load(Aeronave.class, novaAeronave.getHex());
-		aeronaveDb = novaAeronave;
-		session.update(aeronaveDb);
-		transaction.commit();
-		session.close();
+	public static void atualizarAeronave(String hexParaAtualizar, String novoHex, String companhia, String modelo_aeronave){
+		Connection connection;
+		
+		String sql = "UPDATE aeronave SET hex='"+novoHex +"' companhia='"+ companhia +"', modelo_aeroanve='"+ modelo_aeronave +"' WHERE hex='"+ hexParaAtualizar +"'";
+
+		try {
+			
+			connection = ConexaoBanco.AbrirConexao();
+			ConexaoBanco.executeQuery(connection, sql);
+			
+			connection.close();
+			
+
+	
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} catch (Exception e) {
+		e.printStackTrace();
+	
+	}
 	}
 	
 }
