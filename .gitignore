@@ -1,6 +1,11 @@
+.metadata
+.settings
+.classpath
+.project
+target
 *.class
-.DS_Store
-
-# Package Files #
+*.jar
 *.war
 *.ear
+*.log
+.DS_Store
