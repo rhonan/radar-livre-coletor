@@ -18,7 +18,6 @@ public class WebService {
 	public static void enviarParaWS(String radar, String latitude, String longitude, String altitude, String velocidade, String angulo, String hora, String rota_id, String hex){
 		Client client = Client.create();
 		WebResource webResource = client.resource(getBaseURI() + "/observacao");
-		//String input = "{\"radar\":\""+radar+"\",\"latitude\":\""+latitude+"\",\"longitude\":\""+longitude+"\",\"altitude\":\""+altitude+"\",\"velocidade\":\""+velocidade+"\",\"angulo\":\""+angulo+"\",\"hora\":\""+hora+"\",\"rota_id\":\""+rota_id+"\",\"hex\":\""+hex+"\"}";
 		ObservacaoJson obs = new ObservacaoJson(radar, latitude, longitude, altitude, velocidade, angulo, hora, rota_id, hex);
 		ClientResponse response = webResource.type("application/json")
 		   .post(ClientResponse.class, obs);

@@ -38,8 +38,8 @@ public class Cliente {
 					/* Hex: mensagem_quebrada[4]
 					 * Rota: mensagem_quebrada[5] */
 					System.out.println("Case 1 Tipo de mensagem recebida: " + mensagem_quebrada[1]);
-					ObservacaoDao.adicionarObservacao("null", "null", "null", "null", "null", "null", "null", "null", "'"+mensagem_quebrada[4]+"'");
-					WebService.enviarParaWS("null", "null", "null", "null", "null", "null", "null", "null", "'"+mensagem_quebrada[4]+"'");
+					ObservacaoDao.adicionarObservacao("null", "null", "null", "null", "null", "null", "'"+ mensagem_quebrada[8] + " " + mensagem_quebrada[9] +"'", "null", "'"+mensagem_quebrada[4]+"'");
+					WebService.enviarParaWS("null", "null", "null", "null", "null", "null", "'"+ mensagem_quebrada[8] + " " + mensagem_quebrada[9] +"'", "null", "'"+mensagem_quebrada[4]+"'");
 					break;
 				case 2:
 					/* Hex: mensagem_quebrada[4]
@@ -50,8 +50,8 @@ public class Cliente {
 					 * Angulo: mensagem_quebrada[13]
 					 * Velocidade: mensagem_quebrada[12] */
 					System.out.println("Case 2 Tipo de mensagem recebida: " + mensagem_quebrada[1]);
-					ObservacaoDao.adicionarObservacao("null", mensagem_quebrada[14], mensagem_quebrada[15], mensagem_quebrada[11], mensagem_quebrada[12], mensagem_quebrada[13], "null", "null", "'"+mensagem_quebrada[4]+"'");
-					WebService.enviarParaWS("null", mensagem_quebrada[14], mensagem_quebrada[15], mensagem_quebrada[11], mensagem_quebrada[12], mensagem_quebrada[13], "null", "null", "'"+mensagem_quebrada[4]+"'");
+					ObservacaoDao.adicionarObservacao("null", mensagem_quebrada[14], mensagem_quebrada[15], mensagem_quebrada[11], mensagem_quebrada[12], mensagem_quebrada[13], "'"+ mensagem_quebrada[8] + " " + mensagem_quebrada[9] +"'", "null", "'"+mensagem_quebrada[4]+"'");
+					WebService.enviarParaWS("null", mensagem_quebrada[14], mensagem_quebrada[15], mensagem_quebrada[11], mensagem_quebrada[12], mensagem_quebrada[13], "'"+ mensagem_quebrada[8] + " " + mensagem_quebrada[9] +"'", "null", "'"+mensagem_quebrada[4]+"'");
 					break;
 				case 3:
 					/* Hex: mensagem_quebrada[4]
@@ -60,8 +60,8 @@ public class Cliente {
 					 * Latitude: mensagem_quebrada[14]
 					 * Longitude: mensagem_quebrada[15] */
 					System.out.println("Case 3 Tipo de mensagem recebida: " + mensagem_quebrada[1]);
-					ObservacaoDao.adicionarObservacao("null", mensagem_quebrada[14], mensagem_quebrada[15], mensagem_quebrada[11], "null", "null", "null", "null", "'"+mensagem_quebrada[4]+"'");
-					WebService.enviarParaWS("null", mensagem_quebrada[14], mensagem_quebrada[15], mensagem_quebrada[11], "null", "null", "null", "null", "'"+mensagem_quebrada[4]+"'");
+					ObservacaoDao.adicionarObservacao("null", mensagem_quebrada[14], mensagem_quebrada[15], mensagem_quebrada[11], "null", "null", "'"+ mensagem_quebrada[8] + " " + mensagem_quebrada[9] +"'", "null", "'"+mensagem_quebrada[4]+"'");
+					WebService.enviarParaWS("null", mensagem_quebrada[14], mensagem_quebrada[15], mensagem_quebrada[11], "null", "null", "'"+ mensagem_quebrada[8] + " " + mensagem_quebrada[9] +"'", "null", "'"+mensagem_quebrada[4]+"'");
 					break;
 				case 4:
 					/* Hex: mensagem_quebrada[4]
@@ -69,39 +69,39 @@ public class Cliente {
 					 * Angulo: mensagem_quebrada[13]
 					 * Velocidade: mensagem_quebrada[12] */
 					System.out.println("Case 4 Tipo de mensagem recebida: " + mensagem_quebrada[1]);
-					ObservacaoDao.adicionarObservacao("null", "null", "null", "null", "'"+mensagem_quebrada[12]+"'", "'"+mensagem_quebrada[13]+"'", "null", "null", "'"+mensagem_quebrada[4]+"'");
-					WebService.enviarParaWS("null", "null", "null", "null", "'"+mensagem_quebrada[12]+"'", "'"+mensagem_quebrada[13]+"'", "null", "null", "'"+mensagem_quebrada[4]+"'");
+					ObservacaoDao.adicionarObservacao("null", "null", "null", "null", "'"+mensagem_quebrada[12]+"'", "'"+mensagem_quebrada[13]+"'", "'"+ mensagem_quebrada[8] + " " + mensagem_quebrada[9] +"'", "null", "'"+mensagem_quebrada[4]+"'");
+					WebService.enviarParaWS("null", "null", "null", "null", "'"+mensagem_quebrada[12]+"'", "'"+mensagem_quebrada[13]+"'", "'"+ mensagem_quebrada[8] + " " + mensagem_quebrada[9] +"'", "null", "'"+mensagem_quebrada[4]+"'");
 					break;
 				case 5:
 					/* Hex: mensagem_quebrada[4]
 					 * Rota: mensagem_quebrada[5]
 					 * Altitude: mensagem_quebrada[11] */
 					System.out.println("Case 5 Tipo de mensagem recebida: " + mensagem_quebrada[1]);
-					ObservacaoDao.adicionarObservacao("null", "null", "null", mensagem_quebrada[11], "null", "null", "null", "null", "'"+mensagem_quebrada[4]+"'");
-					WebService.enviarParaWS("null", "null", "null", mensagem_quebrada[11], "null", "null", "null", "null", "'"+mensagem_quebrada[4]+"'");
+					ObservacaoDao.adicionarObservacao("null", "null", "null", mensagem_quebrada[11], "null", "null", "'"+ mensagem_quebrada[8] + " " + mensagem_quebrada[9] +"'", "null", "'"+mensagem_quebrada[4]+"'");
+					WebService.enviarParaWS("null", "null", "null", mensagem_quebrada[11], "null", "null", "'"+ mensagem_quebrada[8] + " " + mensagem_quebrada[9] +"'", "null", "'"+mensagem_quebrada[4]+"'");
 					break;
 				case 6:
 					/* Hex: mensagem_quebrada[4]
 					 * Rota: mensagem_quebrada[5]
 					 * Altitude: mensagem_quebrada[11] */
 					System.out.println("Case 6 Tipo de mensagem recebida: " + mensagem_quebrada[1]);
-					ObservacaoDao.adicionarObservacao("null", "null", "null", mensagem_quebrada[11], "null", "null", "null", "null", "'"+mensagem_quebrada[4]+"'");
-					WebService.enviarParaWS("null", "null", "null", mensagem_quebrada[11], "null", "null", "null", "null", "'"+mensagem_quebrada[4]+"'");
+					ObservacaoDao.adicionarObservacao("null", "null", "null", mensagem_quebrada[11], "null", "null", "'"+ mensagem_quebrada[8] + " " + mensagem_quebrada[9] +"'", "null", "'"+mensagem_quebrada[4]+"'");
+					WebService.enviarParaWS("null", "null", "null", mensagem_quebrada[11], "null", "null", "'"+ mensagem_quebrada[8] + " " + mensagem_quebrada[9] +"'", "null", "'"+mensagem_quebrada[4]+"'");
 					break;
 				case 7:
 					/* Hex: mensagem_quebrada[4]
 					 * Rota: mensagem_quebrada[5]
 					 * Altitude: mensagem_quebrada[11] */
 					System.out.println("Case 7 Tipo de mensagem recebida: " + mensagem_quebrada[1]);
-					ObservacaoDao.adicionarObservacao("null", "null", "null", mensagem_quebrada[11], "null", "null", "null", "null", "'"+mensagem_quebrada[4]+"'");
-					WebService.enviarParaWS("null", "null", "null", mensagem_quebrada[11], "null", "null", "null", "null", "'"+mensagem_quebrada[4]+"'");
+					ObservacaoDao.adicionarObservacao("null", "null", "null", mensagem_quebrada[11], "null", "null", "'"+ mensagem_quebrada[8] + " " + mensagem_quebrada[9] +"'", "null", "'"+mensagem_quebrada[4]+"'");
+					WebService.enviarParaWS("null", "null", "null", mensagem_quebrada[11], "null", "null", "'"+ mensagem_quebrada[8] + " " + mensagem_quebrada[9] +"'", "null", "'"+mensagem_quebrada[4]+"'");
 					break;
 				case 8:
 					/* Hex: mensagem_quebrada[4]
 					 * Rota: mensagem_quebrada[5] */
 					System.out.println("Case 8 Tipo de mensagem recebida: " + mensagem_quebrada[1]);
-					ObservacaoDao.adicionarObservacao("null", "null", "null", "null", "null", "null", "null", "null", "'"+mensagem_quebrada[4]+"'");
-					WebService.enviarParaWS("null", "null", "null", "null", "null", "null", "null", "null", "'"+mensagem_quebrada[4]+"'");
+					ObservacaoDao.adicionarObservacao("null", "null", "null", "null", "null", "null", "'"+ mensagem_quebrada[8] + " " + mensagem_quebrada[9] +"'", "null", "'"+mensagem_quebrada[4]+"'");
+					WebService.enviarParaWS("null", "null", "null", "null", "null", "null", "'"+ mensagem_quebrada[8] + " " + mensagem_quebrada[9] +"'", "null", "'"+mensagem_quebrada[4]+"'");
 					break;
 			}
 			
