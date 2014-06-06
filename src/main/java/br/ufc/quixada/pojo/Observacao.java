@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="observacao")
 
-public class ObservacaoJson {
+public class Observacao{
 	
 	private String radar;
 	private String latitude;
@@ -16,7 +16,7 @@ public class ObservacaoJson {
 	private String roda_id;
 	private String hex;
 	
-	public ObservacaoJson(String radar, String latitude, String longitude,
+	public Observacao(String radar, String latitude, String longitude,
 			String altitude, String velocidade, String angulo, String hora,
 			String roda_id, String hex) {
 		super();
@@ -31,7 +31,7 @@ public class ObservacaoJson {
 		this.hex = hex;
 	}
 	
-	public ObservacaoJson(){
+	public Observacao(){
 		
 	}
 	
