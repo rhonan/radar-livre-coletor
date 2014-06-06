@@ -2,18 +2,18 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>br.ufc.quixada</groupId>
-  <artifactId>Radar-Livre-Coletor</artifactId>
-  <packaging>war</packaging>
+  <artifactId>radar-livre-coletor</artifactId>
+  <packaging>jar</packaging>
   <version>0.1</version>
 
   <dependencies>
-	
+
 		<dependency>
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.1-901.jdbc4</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
@@ -32,10 +32,10 @@
 		<artifactId>jersey-json</artifactId>
 		<version>1.8</version>
 	</dependency>
-	
+
   </dependencies>
   <build>
-	<finalName>Radar-Livre</finalName>
+	<finalName>radar-livre-coletor</finalName>
 
 	<plugins>
 		<plugin>
@@ -47,6 +47,6 @@
 			</configuration>
 		</plugin>
 	</plugins>
-    
+
   </build>
 </project>
